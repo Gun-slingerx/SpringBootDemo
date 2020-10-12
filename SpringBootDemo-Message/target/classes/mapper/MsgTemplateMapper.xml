@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.msg.dao.MsgTemplateMapper">
+  <resultMap id="BaseResultMap" type="org.example.msg.domain.MsgTemplate">
+    <!--@mbg.generated-->
+    <!--@Table tb_msg_template-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="template_name" jdbcType="VARCHAR" property="templateName" />
+    <result column="template_code" jdbcType="TINYINT" property="templateCode" />
+    <result column="template_content" jdbcType="VARCHAR" property="templateContent" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="created" jdbcType="VARCHAR" property="created" />
+    <result column="modified" jdbcType="VARCHAR" property="modified" />
+    <result column="active_flag" jdbcType="TINYINT" property="activeFlag" />
+    <result column="platform_code" jdbcType="VARCHAR" property="platformCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, template_name, template_code, template_content, remark, create_time, update_time, 
+    created, modified, active_flag, platform_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_msg_template
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from tb_msg_template
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.example.msg.domain.MsgTemplate" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_msg_template (template_name, template_code, template_content, 
+      remark, create_time, update_time, 
+      created, modified, active_flag, 
+      platform_code)
+    values (#{templateName,jdbcType=VARCHAR}, #{templateCode,jdbcType=TINYINT}, #{templateContent,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{created,jdbcType=VARCHAR}, #{modified,jdbcType=VARCHAR}, #{activeFlag,jdbcType=TINYINT}, 
+      #{platformCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.example.msg.domain.MsgTemplate" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_msg_template
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="templateName != null">
+        template_name,
+      </if>
+      <if test="templateCode != null">
+        template_code,
+      </if>
+      <if test="templateContent != null">
+        template_content,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="modified != null">
+        modified,
+      </if>
+      <if test="activeFlag != null">
+        active_flag,
+      </if>
+      <if test="platformCode != null">
+        platform_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="templateName != null">
+        #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="templateCode != null">
+        #{templateCode,jdbcType=TINYINT},
+      </if>
+      <if test="templateContent != null">
+        #{templateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=VARCHAR},
+      </if>
+      <if test="modified != null">
+        #{modified,jdbcType=VARCHAR},
+      </if>
+      <if test="activeFlag != null">
+        #{activeFlag,jdbcType=TINYINT},
+      </if>
+      <if test="platformCode != null">
+        #{platformCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.example.msg.domain.MsgTemplate">
+    <!--@mbg.generated-->
+    update tb_msg_template
+    <set>
+      <if test="templateName != null">
+        template_name = #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="templateCode != null">
+        template_code = #{templateCode,jdbcType=TINYINT},
+      </if>
+      <if test="templateContent != null">
+        template_content = #{templateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=VARCHAR},
+      </if>
+      <if test="modified != null">
+        modified = #{modified,jdbcType=VARCHAR},
+      </if>
+      <if test="activeFlag != null">
+        active_flag = #{activeFlag,jdbcType=TINYINT},
+      </if>
+      <if test="platformCode != null">
+        platform_code = #{platformCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.example.msg.domain.MsgTemplate">
+    <!--@mbg.generated-->
+    update tb_msg_template
+    set template_name = #{templateName,jdbcType=VARCHAR},
+      template_code = #{templateCode,jdbcType=TINYINT},
+      template_content = #{templateContent,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      created = #{created,jdbcType=VARCHAR},
+      modified = #{modified,jdbcType=VARCHAR},
+      active_flag = #{activeFlag,jdbcType=TINYINT},
+      platform_code = #{platformCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update tb_msg_template
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="template_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.templateName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="template_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.templateCode,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="template_content = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.templateContent,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="remark = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.remark,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.createTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.updateTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="created = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.created,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="modified = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.modified,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="active_flag = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.activeFlag,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="platform_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.platformCode,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_msg_template
+    (template_name, template_code, template_content, remark, create_time, update_time, 
+      created, modified, active_flag, platform_code)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.templateName,jdbcType=VARCHAR}, #{item.templateCode,jdbcType=TINYINT}, #{item.templateContent,jdbcType=VARCHAR}, 
+        #{item.remark,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}, 
+        #{item.created,jdbcType=VARCHAR}, #{item.modified,jdbcType=VARCHAR}, #{item.activeFlag,jdbcType=TINYINT}, 
+        #{item.platformCode,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>

@@ -2,10 +2,13 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="SpringBootDemo-Zookeeper" />
+        <module name="SpringBootDemo-Message" />
         <module name="SpringBootDemo-kafka" />
       </profile>
     </annotationProcessing>
@@ -14,6 +17,8 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="SpringBootDemo" options="" />
+      <module name="SpringBootDemo-Message" options="" />
+      <module name="SpringBootDemo-Zookeeper" options="" />
       <module name="SpringBootDemo-kafka" options="" />
       <module name="SpringBootDemo-parent" options="" />
     </option>

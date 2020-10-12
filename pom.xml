@@ -12,6 +12,8 @@
     <modules>
         <module>SpringBootDemo-kafka</module>
         <module>SpringBootDemo-parent</module>
+        <module>SpringBootDemo-Zookeeper</module>
+        <module>SpringBootDemo-Message</module>
     </modules>
 
 
