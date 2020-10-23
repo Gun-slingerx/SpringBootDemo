@@ -2,7 +2,9 @@ package org.example.msg.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.example.msg.domain.Test;
 import org.example.msg.req.CreateMsgTemplateReq;
+import org.example.msg.req.TestReq;
 import org.example.msg.res.BaseRes;
 import org.example.msg.service.MsgTemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,18 +21,17 @@ public class MsgTemplateController {
     @Autowired
     private MsgTemplateService msgTemplateService;
 
+
     @ApiOperation(value = "创建短信模板")
     @RequestMapping(value = {"/createMsgTemplate"}, method = RequestMethod.POST)
     public BaseRes createMsgTemplate(@RequestBody CreateMsgTemplateReq createMsgTemplateReq){
         return msgTemplateService.createMsgTemplate(createMsgTemplateReq);
     }
 
-    //修改模板
-    //删除模板
-    //停用模板
-    //查询模板列表(查询条件 短信签名，签名名称，)
-    //查询详细
-
-
+    public BaseRes createTest(@RequestBody TestReq testReq){
+        Test test = new Test();
+        msgTemplateService.insert(test);
+        return new BaseRes(0);
+    }
 }
 

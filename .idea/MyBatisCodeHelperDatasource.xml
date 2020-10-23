@@ -76,6 +76,21 @@
                 </TableGenerateConfig>
               </value>
             </entry>
+            <entry key="test:tb_test">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="" />
+                  <option name="javaModelName" value="Test" />
+                  <option name="moduleName" value="SpringBootDemo-Message" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="updateBatch" value="true" />
+                  <option name="updateBatchSelective" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
           </map>
         </option>
         <option name="updateBatch" value="true" />

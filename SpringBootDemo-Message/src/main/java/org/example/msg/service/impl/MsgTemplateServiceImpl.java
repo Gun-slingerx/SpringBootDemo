@@ -2,6 +2,8 @@ package org.example.msg.service.impl;
 
 
 import org.example.msg.context.SuccessEnum;
+import org.example.msg.dao.TestMapper;
+import org.example.msg.domain.Test;
 import org.example.msg.req.CreateMsgTemplateReq;
 import org.example.msg.res.BaseRes;
 import org.example.util.SnowflakeIdWorker;
@@ -16,12 +18,16 @@ import java.util.List;
 import org.example.msg.dao.MsgTemplateMapper;
 import org.example.msg.domain.MsgTemplate;
 import org.example.msg.service.MsgTemplateService;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MsgTemplateServiceImpl implements MsgTemplateService {
 
     @Resource
     private MsgTemplateMapper msgTemplateMapper;
+
+    @Resource
+    private TestMapper testMapper;
 
 
     @Override
@@ -74,6 +80,18 @@ public class MsgTemplateServiceImpl implements MsgTemplateService {
 
         //调用阿里云新增短信模板接口
         return new BaseRes(SuccessEnum.SUCCESS.getCode());
+    }
+
+    @Override
+    @Transactional
+    public int insert(Test record) {
+        //在这里写一个异常
+        try {
+
+        }catch (Exception e){
+
+        }
+        return testMapper.insert(record);
     }
 
 }

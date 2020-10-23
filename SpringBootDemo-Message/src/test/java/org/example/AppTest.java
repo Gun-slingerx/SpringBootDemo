@@ -26,8 +26,6 @@ public class AppTest
     public void shouldAnswerWithTrue()
     {
         Long id = snowflakeIdWorker.nextId();
-
-
         assertTrue( true );
     }
 }
