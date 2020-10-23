@@ -9,13 +9,15 @@ import org.example.msg.domain.MsgTemplate;
 public interface MsgTemplateMapper {
     /**
      * delete by primary key
+     *
      * @param id primaryKey
      * @return deleteCount
      */
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     /**
      * insert record to table
+     *
      * @param record the record
      * @return insert count
      */
@@ -23,6 +25,7 @@ public interface MsgTemplateMapper {
 
     /**
      * insert record to table selective
+     *
      * @param record the record
      * @return insert count
      */
@@ -30,13 +33,15 @@ public interface MsgTemplateMapper {
 
     /**
      * select by primary key
+     *
      * @param id primary key
      * @return object by primary key
      */
-    MsgTemplate selectByPrimaryKey(Integer id);
+    MsgTemplate selectByPrimaryKey(Long id);
 
     /**
      * update record selective
+     *
      * @param record the updated record
      * @return update count
      */
@@ -44,12 +49,15 @@ public interface MsgTemplateMapper {
 
     /**
      * update record
+     *
      * @param record the updated record
      * @return update count
      */
     int updateByPrimaryKey(MsgTemplate record);
 
     int updateBatch(List<MsgTemplate> list);
+
+    int updateBatchSelective(List<MsgTemplate> list);
 
     int batchInsert(@Param("list") List<MsgTemplate> list);
 }

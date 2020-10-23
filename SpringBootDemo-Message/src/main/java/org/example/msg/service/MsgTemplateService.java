@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 public interface MsgTemplateService{
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(MsgTemplate record);
 
     int insertSelective(MsgTemplate record);
 
-    MsgTemplate selectByPrimaryKey(Integer id);
+    MsgTemplate selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(MsgTemplate record);
 

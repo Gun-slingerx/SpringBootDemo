@@ -52,7 +52,7 @@
               <value>
                 <TableGenerateConfig>
                   <option name="batchInsert" value="true" />
-                  <option name="generatedKey" value="id" />
+                  <option name="generatedKey" value="" />
                   <option name="javaModelName" value="MsgSends" />
                   <option name="moduleName" value="SpringBootDemo-Message" />
                   <option name="sequenceColumn" value="" />
@@ -79,6 +79,7 @@
           </map>
         </option>
         <option name="updateBatch" value="true" />
+        <option name="updateBatchSelective" value="true" />
         <option name="useSwagger" value="true" />
         <option name="xmlMapperPackage" value="mapper" />
         <option name="xmlMapperPath" value="$PROJECT_DIR$/SpringBootDemo-Message/src/main/resources" />

@@ -1,6 +1,4 @@
-package org.example.msg.util;
-
-import org.springframework.stereotype.Component;
+package org.example.util;
 
 /**
  * Twitter_Snowflake<br>

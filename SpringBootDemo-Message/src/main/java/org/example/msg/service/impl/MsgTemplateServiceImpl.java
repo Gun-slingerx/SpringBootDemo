@@ -1,11 +1,10 @@
 package org.example.msg.service.impl;
 
-import org.example.msg.context.BaseUser;
-import org.example.msg.context.PlatformCodeEnum;
+
 import org.example.msg.context.SuccessEnum;
 import org.example.msg.req.CreateMsgTemplateReq;
 import org.example.msg.res.BaseRes;
-import org.example.msg.util.SnowflakeIdWorker;
+import org.example.util.SnowflakeIdWorker;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +25,7 @@ public class MsgTemplateServiceImpl implements MsgTemplateService {
 
 
     @Override
-    public int deleteByPrimaryKey(Integer id) {
+    public int deleteByPrimaryKey(Long id) {
         return msgTemplateMapper.deleteByPrimaryKey(id);
     }
 
@@ -41,7 +40,7 @@ public class MsgTemplateServiceImpl implements MsgTemplateService {
     }
 
     @Override
-    public MsgTemplate selectByPrimaryKey(Integer id) {
+    public MsgTemplate selectByPrimaryKey(Long id) {
         return msgTemplateMapper.selectByPrimaryKey(id);
     }
 
@@ -68,19 +67,7 @@ public class MsgTemplateServiceImpl implements MsgTemplateService {
     @Override
     public BaseRes createMsgTemplate(CreateMsgTemplateReq createMsgTemplateReq) {
         SnowflakeIdWorker snowflakeIdWorker = new SnowflakeIdWorker(1,1);
-        MsgTemplate msgTemplate = new MsgTemplate(
-                snowflakeIdWorker.nextId(),
-                null,
-                (byte) 0,
-                null,
-                null,
-                new Date(),
-                new Date(),
-                BaseUser.LR.getName(),
-                BaseUser.LR.getName(),
-                (byte) 1,
-                PlatformCodeEnum.COMMONPLAT.getPlatName()
-        );
+        MsgTemplate msgTemplate = new MsgTemplate();
 
         BeanUtils.copyProperties(createMsgTemplateReq,msgTemplate);
         msgTemplateMapper.insert(msgTemplate);

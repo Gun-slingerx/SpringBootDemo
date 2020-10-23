@@ -18,9 +18,9 @@ public class MsgSends {
     private Integer id;
 
     /**
-     * 发送号码
+     * 发送号码(json格式，例如{"15211111111","15211111112"})
      */
-    @ApiModelProperty(value = "发送号码")
+    @ApiModelProperty(value = "发送号码(json格式，例如{'15211111111','15211111112'})")
     private String phoneNumbers;
 
     /**
@@ -36,6 +36,12 @@ public class MsgSends {
     private String msgCode;
 
     /**
+     * 状态码的描述
+     */
+    @ApiModelProperty(value = "状态码的描述")
+    private String message;
+
+    /**
      * 请求ID
      */
     @ApiModelProperty(value = "请求ID")
@@ -46,6 +52,18 @@ public class MsgSends {
      */
     @ApiModelProperty(value = "发送回执ID，可根据该ID在接口QuerySendDetails中查询具体的发送状态。")
     private String bizId;
+
+    /**
+     * 1，阿里云 2，网易云信(暂时未开通) 3，其他
+     */
+    @ApiModelProperty(value = "1，阿里云 2，网易云信(暂时未开通) 3，其他")
+    private Byte smsserviceplatCode;
+
+    /**
+     * 平台编码
+     */
+    @ApiModelProperty(value = "平台编码")
+    private Byte platformCode;
 
     /**
      * 创建时间
@@ -76,10 +94,4 @@ public class MsgSends {
      */
     @ApiModelProperty(value = "有效标志 1有效 0无效")
     private Byte activeFlag;
-
-    /**
-     * 平台编码
-     */
-    @ApiModelProperty(value = "平台编码")
-    private String platformCode;
 }

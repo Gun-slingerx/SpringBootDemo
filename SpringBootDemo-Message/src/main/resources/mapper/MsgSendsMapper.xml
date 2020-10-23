@@ -5,22 +5,24 @@
     <!--@mbg.generated-->
     <!--@Table tb_msg_sends-->
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="phone_numbers" jdbcType="VARCHAR" property="phoneNumbers" />
+    <result column="phone_numbers" jdbcType="LONGVARCHAR" property="phoneNumbers" />
     <result column="msg_content" jdbcType="VARCHAR" property="msgContent" />
     <result column="msg_code" jdbcType="VARCHAR" property="msgCode" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
     <result column="request_id" jdbcType="VARCHAR" property="requestId" />
     <result column="biz_id" jdbcType="VARCHAR" property="bizId" />
+    <result column="smsserviceplat_code" jdbcType="TINYINT" property="smsserviceplatCode" />
+    <result column="platform_code" jdbcType="TINYINT" property="platformCode" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="created" jdbcType="VARCHAR" property="created" />
     <result column="modified" jdbcType="VARCHAR" property="modified" />
     <result column="active_flag" jdbcType="TINYINT" property="activeFlag" />
-    <result column="platform_code" jdbcType="VARCHAR" property="platformCode" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, phone_numbers, msg_content, msg_code, request_id, biz_id, create_time, update_time, 
-    created, modified, active_flag, platform_code
+    id, phone_numbers, msg_content, msg_code, message, request_id, biz_id, smsserviceplat_code, 
+    platform_code, create_time, update_time, created, modified, active_flag
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -34,21 +36,26 @@
     delete from tb_msg_sends
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.example.msg.domain.MsgSends" useGeneratedKeys="true">
+  <insert id="insert" parameterType="org.example.msg.domain.MsgSends">
     <!--@mbg.generated-->
-    insert into tb_msg_sends (phone_numbers, msg_content, msg_code, 
-      request_id, biz_id, create_time, 
-      update_time, created, modified, 
-      active_flag, platform_code)
-    values (#{phoneNumbers,jdbcType=VARCHAR}, #{msgContent,jdbcType=VARCHAR}, #{msgCode,jdbcType=VARCHAR}, 
-      #{requestId,jdbcType=VARCHAR}, #{bizId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{created,jdbcType=VARCHAR}, #{modified,jdbcType=VARCHAR}, 
-      #{activeFlag,jdbcType=TINYINT}, #{platformCode,jdbcType=VARCHAR})
+    insert into tb_msg_sends (id, phone_numbers, msg_content, 
+      msg_code, message, request_id, 
+      biz_id, smsserviceplat_code, platform_code, 
+      create_time, update_time, created, 
+      modified, active_flag)
+    values (#{id,jdbcType=INTEGER}, #{phoneNumbers,jdbcType=LONGVARCHAR}, #{msgContent,jdbcType=VARCHAR}, 
+      #{msgCode,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, #{requestId,jdbcType=VARCHAR}, 
+      #{bizId,jdbcType=VARCHAR}, #{smsserviceplatCode,jdbcType=TINYINT}, #{platformCode,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{created,jdbcType=VARCHAR}, 
+      #{modified,jdbcType=VARCHAR}, #{activeFlag,jdbcType=TINYINT})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.example.msg.domain.MsgSends" useGeneratedKeys="true">
+  <insert id="insertSelective" parameterType="org.example.msg.domain.MsgSends">
     <!--@mbg.generated-->
     insert into tb_msg_sends
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
       <if test="phoneNumbers != null">
         phone_numbers,
       </if>
@@ -58,11 +65,20 @@
       <if test="msgCode != null">
         msg_code,
       </if>
+      <if test="message != null">
+        message,
+      </if>
       <if test="requestId != null">
         request_id,
       </if>
       <if test="bizId != null">
         biz_id,
+      </if>
+      <if test="smsserviceplatCode != null">
+        smsserviceplat_code,
+      </if>
+      <if test="platformCode != null">
+        platform_code,
       </if>
       <if test="createTime != null">
         create_time,
@@ -79,13 +95,13 @@
       <if test="activeFlag != null">
         active_flag,
       </if>
-      <if test="platformCode != null">
-        platform_code,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
       <if test="phoneNumbers != null">
-        #{phoneNumbers,jdbcType=VARCHAR},
+        #{phoneNumbers,jdbcType=LONGVARCHAR},
       </if>
       <if test="msgContent != null">
         #{msgContent,jdbcType=VARCHAR},
@@ -93,11 +109,20 @@
       <if test="msgCode != null">
         #{msgCode,jdbcType=VARCHAR},
       </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
       <if test="requestId != null">
         #{requestId,jdbcType=VARCHAR},
       </if>
       <if test="bizId != null">
         #{bizId,jdbcType=VARCHAR},
+      </if>
+      <if test="smsserviceplatCode != null">
+        #{smsserviceplatCode,jdbcType=TINYINT},
+      </if>
+      <if test="platformCode != null">
+        #{platformCode,jdbcType=TINYINT},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -114,9 +139,6 @@
       <if test="activeFlag != null">
         #{activeFlag,jdbcType=TINYINT},
       </if>
-      <if test="platformCode != null">
-        #{platformCode,jdbcType=VARCHAR},
-      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.example.msg.domain.MsgSends">
@@ -124,7 +146,7 @@
     update tb_msg_sends
     <set>
       <if test="phoneNumbers != null">
-        phone_numbers = #{phoneNumbers,jdbcType=VARCHAR},
+        phone_numbers = #{phoneNumbers,jdbcType=LONGVARCHAR},
       </if>
       <if test="msgContent != null">
         msg_content = #{msgContent,jdbcType=VARCHAR},
@@ -132,11 +154,20 @@
       <if test="msgCode != null">
         msg_code = #{msgCode,jdbcType=VARCHAR},
       </if>
+      <if test="message != null">
+        message = #{message,jdbcType=VARCHAR},
+      </if>
       <if test="requestId != null">
         request_id = #{requestId,jdbcType=VARCHAR},
       </if>
       <if test="bizId != null">
         biz_id = #{bizId,jdbcType=VARCHAR},
+      </if>
+      <if test="smsserviceplatCode != null">
+        smsserviceplat_code = #{smsserviceplatCode,jdbcType=TINYINT},
+      </if>
+      <if test="platformCode != null">
+        platform_code = #{platformCode,jdbcType=TINYINT},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -153,26 +184,25 @@
       <if test="activeFlag != null">
         active_flag = #{activeFlag,jdbcType=TINYINT},
       </if>
-      <if test="platformCode != null">
-        platform_code = #{platformCode,jdbcType=VARCHAR},
-      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.example.msg.domain.MsgSends">
     <!--@mbg.generated-->
     update tb_msg_sends
-    set phone_numbers = #{phoneNumbers,jdbcType=VARCHAR},
+    set phone_numbers = #{phoneNumbers,jdbcType=LONGVARCHAR},
       msg_content = #{msgContent,jdbcType=VARCHAR},
       msg_code = #{msgCode,jdbcType=VARCHAR},
+      message = #{message,jdbcType=VARCHAR},
       request_id = #{requestId,jdbcType=VARCHAR},
       biz_id = #{bizId,jdbcType=VARCHAR},
+      smsserviceplat_code = #{smsserviceplatCode,jdbcType=TINYINT},
+      platform_code = #{platformCode,jdbcType=TINYINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       created = #{created,jdbcType=VARCHAR},
       modified = #{modified,jdbcType=VARCHAR},
-      active_flag = #{activeFlag,jdbcType=TINYINT},
-      platform_code = #{platformCode,jdbcType=VARCHAR}
+      active_flag = #{activeFlag,jdbcType=TINYINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateBatch" parameterType="java.util.List">
@@ -181,7 +211,7 @@
     <trim prefix="set" suffixOverrides=",">
       <trim prefix="phone_numbers = case" suffix="end,">
         <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.phoneNumbers,jdbcType=VARCHAR}
+          when id = #{item.id,jdbcType=INTEGER} then #{item.phoneNumbers,jdbcType=LONGVARCHAR}
         </foreach>
       </trim>
       <trim prefix="msg_content = case" suffix="end,">
@@ -194,6 +224,11 @@
           when id = #{item.id,jdbcType=INTEGER} then #{item.msgCode,jdbcType=VARCHAR}
         </foreach>
       </trim>
+      <trim prefix="message = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.message,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
       <trim prefix="request_id = case" suffix="end,">
         <foreach collection="list" index="index" item="item">
           when id = #{item.id,jdbcType=INTEGER} then #{item.requestId,jdbcType=VARCHAR}
@@ -202,6 +237,16 @@
       <trim prefix="biz_id = case" suffix="end,">
         <foreach collection="list" index="index" item="item">
           when id = #{item.id,jdbcType=INTEGER} then #{item.bizId,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="smsserviceplat_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.smsserviceplatCode,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="platform_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.platformCode,jdbcType=TINYINT}
         </foreach>
       </trim>
       <trim prefix="create_time = case" suffix="end,">
@@ -229,28 +274,24 @@
           when id = #{item.id,jdbcType=INTEGER} then #{item.activeFlag,jdbcType=TINYINT}
         </foreach>
       </trim>
-      <trim prefix="platform_code = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.platformCode,jdbcType=VARCHAR}
-        </foreach>
-      </trim>
     </trim>
     where id in
     <foreach close=")" collection="list" item="item" open="(" separator=", ">
       #{item.id,jdbcType=INTEGER}
     </foreach>
   </update>
-  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+  <insert id="batchInsert" parameterType="map">
     <!--@mbg.generated-->
     insert into tb_msg_sends
-    (phone_numbers, msg_content, msg_code, request_id, biz_id, create_time, update_time, 
-      created, modified, active_flag, platform_code)
+    (id, phone_numbers, msg_content, msg_code, message, request_id, biz_id, smsserviceplat_code, 
+      platform_code, create_time, update_time, created, modified, active_flag)
     values
     <foreach collection="list" item="item" separator=",">
-      (#{item.phoneNumbers,jdbcType=VARCHAR}, #{item.msgContent,jdbcType=VARCHAR}, #{item.msgCode,jdbcType=VARCHAR}, 
-        #{item.requestId,jdbcType=VARCHAR}, #{item.bizId,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, 
-        #{item.updateTime,jdbcType=TIMESTAMP}, #{item.created,jdbcType=VARCHAR}, #{item.modified,jdbcType=VARCHAR}, 
-        #{item.activeFlag,jdbcType=TINYINT}, #{item.platformCode,jdbcType=VARCHAR})
+      (#{item.id,jdbcType=INTEGER}, #{item.phoneNumbers,jdbcType=LONGVARCHAR}, #{item.msgContent,jdbcType=VARCHAR}, 
+        #{item.msgCode,jdbcType=VARCHAR}, #{item.message,jdbcType=VARCHAR}, #{item.requestId,jdbcType=VARCHAR}, 
+        #{item.bizId,jdbcType=VARCHAR}, #{item.smsserviceplatCode,jdbcType=TINYINT}, #{item.platformCode,jdbcType=TINYINT}, 
+        #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}, #{item.created,jdbcType=VARCHAR}, 
+        #{item.modified,jdbcType=VARCHAR}, #{item.activeFlag,jdbcType=TINYINT})
     </foreach>
   </insert>
 </mapper>
