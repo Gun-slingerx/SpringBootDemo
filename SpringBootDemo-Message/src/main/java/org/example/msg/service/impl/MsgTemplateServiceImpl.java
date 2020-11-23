@@ -8,7 +8,6 @@ import org.example.msg.req.CreateMsgTemplateReq;
 import org.example.msg.res.BaseRes;
 import org.example.util.SnowflakeIdWorker;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

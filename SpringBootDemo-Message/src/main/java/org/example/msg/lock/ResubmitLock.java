@@ -51,29 +51,29 @@ public class ResubmitLock {
         return DigestUtils.md5Hex(param == null ? "" : param);
     }
 
-    /**
-     * 加锁 putIfAbsent 是原子操作保证线程安全
-     *
-     * @param key   对应的key
-     * @param value
-     * @return
-     */
-    public boolean lock(final String key, Object value) {
-        return Objects.isNull(LOCK_CACHE.putIfAbsent(key, value));
-    }
-
-    /**
-     * 延时释放锁 用以控制短时间内的重复提交
-     *
-     * @param lock         是否需要解锁
-     * @param key          对应的key
-     * @param delaySeconds 延时时间
-     */
-    public void unLock(final boolean lock, final String key, final int delaySeconds) {
-        if (lock) {
-            EXECUTOR.schedule(() -> {
-                LOCK_CACHE.remove(key);
-            }, delaySeconds, TimeUnit.SECONDS);
-        }
-    }
+//    /**
+//     * 加锁 putIfAbsent 是原子操作保证线程安全
+//     *
+//     * @param key   对应的key
+//     * @param value
+//     * @return
+//     */
+//    public boolean lock(final String key, Object value) {
+//        return Objects.isNull(LOCK_CACHE.putIfAbsent(key, value));
+//    }
+//
+//    /**
+//     * 延时释放锁 用以控制短时间内的重复提交
+//     *
+//     * @param lock         是否需要解锁
+//     * @param key          对应的key
+//     * @param delaySeconds 延时时间
+//     */
+//    public void unLock(final boolean lock, final String key, final int delaySeconds) {
+//        if (lock) {
+//            EXECUTOR.schedule(() -> {
+//                LOCK_CACHE.remove(key);
+//            }, delaySeconds, TimeUnit.SECONDS);
+//        }
+//    }
 }

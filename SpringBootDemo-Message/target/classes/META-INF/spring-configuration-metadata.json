@@ -1,0 +1,11 @@
+{
+  "groups": [],
+  "properties": [
+    {
+      "name": "spring.cloud.nacos.config.shared-configs[1].data-id",
+      "type": "java.lang.String",
+      "description": "Description for spring.cloud.nacos.config.shared-configs[1].data-id."
+    }
+  ],
+  "hints": []
+}
