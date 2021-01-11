@@ -28,4 +28,6 @@ public interface MsgTemplateService{
     BaseRes createMsgTemplate(@RequestBody CreateMsgTemplateReq createMsgTemplateReq);
 
     int insert(Test record);
+
+    //
 }
