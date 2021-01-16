@@ -1,17 +1,17 @@
 package org.example.handle;
 
-import java.util.List;
-
 /**
  * 映射接口
+ *
  * @author admin
  */
 public interface CsvHandle {
 
     /**
-     * @param original
-     * @param system
-     * @param list
+     *@description: 映射方法
+     *@author:Lr
+     *@createTime: 2021/1/12 10:20
      */
-    void csvHandleMapping(Object original , Object system , List list);
+    <T> T csvHandleMapping(Object original, Class<T> system);
+
 }

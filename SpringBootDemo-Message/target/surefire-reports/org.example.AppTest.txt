@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: org.example.AppTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.037 sec <<< FAILURE!
-shouldAnswerWithTrue(org.example.AppTest)  Time elapsed: 0.004 sec  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.035 sec <<< FAILURE!
+shouldAnswerWithTrue(org.example.AppTest)  Time elapsed: 0.003 sec  <<< ERROR!
 java.lang.NullPointerException
 	at org.example.AppTest.shouldAnswerWithTrue(AppTest.java:28)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)

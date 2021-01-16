@@ -1,0 +1,7 @@
+"id","name","url","type","permission","method","sort","parent_id"
+"1072806379288399872","测试页面","/test","1","page:test",,"1","0"
+"1072806379313565696","测试页面-查询","/**/test","2","btn:test:query","GET","1","1072806379288399872"
+"1072806379330342912","测试页面-添加","/**/test","2","btn:test:insert","POST","2","1072806379288399872"
+"1072806379342925824","监控在线用户页面","/monitor","1","page:monitor:online",,"2","0"
+"1072806379363897344","在线用户页面-查询","/**/api/monitor/online/user","2","btn:monitor:online:query","GET","1","1072806379342925824"
+"1072806379384868864","在线用户页面-踢出","/**/api/monitor/online/user/kickout","2","btn:monitor:online:kickout","DELETE","2","1072806379342925824"

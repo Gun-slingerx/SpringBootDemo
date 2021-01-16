@@ -157,5 +157,11 @@
             <version>2.9.8</version>
             <!-- 版本可以使用2.9.3、2.9.5 、2.9.8，不能忽略version属性-->
         </dependency>
+
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>5.2</version>
+        </dependency>
     </dependencies>
 </project>

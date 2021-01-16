@@ -1,13 +1,19 @@
 package org.example.msg.service.impl;
 
-import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
-import java.util.List;
+import org.example.msg.dao.AccountMapper;
 import org.example.msg.dao.MsgSendsMapper;
+import org.example.msg.domain.Account;
 import org.example.msg.domain.MsgSends;
 import org.example.msg.service.MsgSendsService;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
 @Service
 public class MsgSendsServiceImpl implements MsgSendsService{
+
+    @Resource
+    private AccountMapper accountMapper;
 
     @Resource
     private MsgSendsMapper msgSendsMapper;
@@ -19,6 +25,8 @@ public class MsgSendsServiceImpl implements MsgSendsService{
 
     @Override
     public int deleteByPrimaryKey(Integer id) {
+        Account account = new Account();
+        account.setMobile1("KK");
         return msgSendsMapper.deleteByPrimaryKey(id);
     }
 
